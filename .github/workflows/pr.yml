@@ -1,0 +1,86 @@
+name: Validar PR
+
+# pull_request_target roda o código da base (main) com permissão de escrita, para comentar e fazer o merge.
+# O conteúdo do PR só é lido como dado (git show) pelos scripts da base; nada do PR é instalado ou executado.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions: {}
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      - run: npm ci --ignore-scripts
+
+      - name: Buscar os commits do PR (só dados)
+        run: git fetch --no-tags origin "refs/pull/${PR_NUMBER}/head"
+
+      - name: Validar
+        id: validar
+        env:
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          BOT_LOGIN: ${{ vars.BOT_LOGIN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          RESULT_FILE: ${{ runner.temp }}/result.md
+        # Se outro PR entrou na main durante a validação, valida de novo contra a base nova: as regras entre mods
+        # (id, arquivo, dependências) dependem dela. O que ainda escapar, a publicação descarta.
+        run: |
+          set +e
+          codigo=2
+          for tentativa in 1 2 3; do
+            base=$(git rev-parse HEAD)
+            node scripts/validate-pr.mjs
+            codigo=$?
+            [ "$codigo" = 0 ] || break
+            git fetch --no-tags -q origin main
+            [ "$(git rev-parse FETCH_HEAD)" = "$base" ] && break
+            git checkout -q FETCH_HEAD
+            codigo=2
+          done
+          if [ "$codigo" = 2 ]; then
+            echo '⚠️ Não consegui validar o PR agora. Um mantenedor vai rodar a validação de novo.' > "$RESULT_FILE"
+          fi
+          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
+
+      - name: Comentar o resultado
+        if: always() && steps.validar.outputs.codigo != ''
+        run: gh pr comment "$PR_NUMBER" --body-file "$RUNNER_TEMP/result.md"
+
+      # --match-head-commit: se chegou commit novo depois da validação, o merge é recusado e o PR é validado de novo.
+      - name: Merge
+        if: steps.validar.outputs.codigo == '0'
+        run: gh pr merge "$PR_NUMBER" --squash --match-head-commit "$HEAD_SHA"
+
+      # Merge feito com o GITHUB_TOKEN não dispara o workflow de push; workflow_dispatch é a exceção permitida.
+      - name: Republicar o catálogo
+        if: steps.validar.outputs.codigo == '0'
+        run: gh workflow run publish.yml --ref main
+
+      - name: Falhar se a validação não rodou
+        if: steps.validar.outputs.codigo == '2'
+        run: exit 1

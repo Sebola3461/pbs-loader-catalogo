@@ -1,0 +1,17 @@
+{
+  "name": "pbs-loader-catalogo",
+  "private": true,
+  "type": "module",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test --experimental-test-coverage --test-coverage-include=scripts/**/*.mjs \"tests/**/*.test.mjs\"",
+    "validate-pr": "node scripts/validate-pr.mjs",
+    "build-site": "node scripts/publish.mjs _site"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  }
+}
