@@ -1,0 +1,30 @@
+{
+  "id": "bettergraphics-experimental",
+  "nome": "BetterGraphics (Experimental)",
+  "tipo": "plugin",
+  "autor": "KasaneTeto",
+  "dono": {
+    "site": "01a193bf-3713-7623-b92a-4a4fec5f3c38"
+  },
+  "descricao": "Melhora os gráficos do jogo para deixar mais realista e suave.\n\nChuva, iluminação, reflexos, sombras e tudo mais!",
+  "versoesDoJogo": [
+    "307"
+  ],
+  "origem": {
+    "github": {
+      "repo": "Sebola3461/BetterGraphics",
+      "tag": "BetterGraphics-v",
+      "arquivo": "BetterGraphics.dll"
+    }
+  },
+  "imagens": [
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/0.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/1.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/2.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/3.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/Screenshot%202026-10-31%20232912.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/6.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/5.png",
+    "https://raw.githubusercontent.com/Sebola3461/BetterGraphics/main/prints/4.png"
+  ]
+}
