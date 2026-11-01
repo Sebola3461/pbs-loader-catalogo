@@ -30,6 +30,20 @@ test('achata a origem do GitHub nos campos que o instalador lê', () => {
   });
 });
 
+test('imagens da galeria atravessam para o agregado; sem imagens, o campo não existe', () => {
+  const imagens = ['https://raw.githubusercontent.com/fulano/meu-mod/main/prints/a.png'];
+  const com = buildCatalog([{ mod: sampleMod({ imagens }), ...dates, hasCover: false }], {
+    trustedAuthors: new Set(),
+    generatedAt: 'agora',
+  });
+  assert.deepEqual(com.mods[0].imagens, imagens);
+  const sem = buildCatalog([{ mod: sampleMod(), ...dates, hasCover: false }], {
+    trustedAuthors: new Set(),
+    generatedAt: 'agora',
+  });
+  assert.ok(!('imagens' in sem.mods[0]));
+});
+
 test('link externo, oculto, confiável e ordem por id', () => {
   const externo = sampleMod({ id: 'b-mapa', tipo: 'mapa', dono: { site: SITE_USER }, origem: { externa: { url: 'https://mega.nz/x' } }, pagina: 'https://site.com', dependencias: undefined });
   const c = buildCatalog(

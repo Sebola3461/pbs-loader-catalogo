@@ -7,6 +7,19 @@ test('mod completo passa', () => {
   assert.deepEqual(schemaErrors(sampleMod()), []);
   assert.deepEqual(schemaErrors(sampleMod({ dono: { site: SITE_USER }, pagina: 'https://exemplo.com/mod' })), []);
   assert.deepEqual(schemaErrors(sampleMod({ tipo: 'onibus', origem: { externa: { url: 'https://drive.google.com/x' } } })), []);
+  assert.deepEqual(
+    schemaErrors(sampleMod({ imagens: ['https://raw.githubusercontent.com/fulano/mod/main/prints/a.png'] })),
+    [],
+  );
+});
+
+test('imagens da galeria: até 10, só raw.githubusercontent, sem repetição', () => {
+  const imagem = 'https://raw.githubusercontent.com/fulano/mod/main/prints/a.png';
+  assert.ok(schemaErrors(sampleMod({ imagens: Array(11).fill(imagem) })).some((e) => e.startsWith('/imagens')));
+  assert.ok(
+    schemaErrors(sampleMod({ imagens: ['https://exemplo.com/a.png'] })).some((e) => e.startsWith('/imagens/0')),
+  );
+  assert.ok(schemaErrors(sampleMod({ imagens: [imagem, imagem] })).some((e) => e.startsWith('/imagens')));
 });
 
 test('mensagens em português para os erros comuns', () => {
@@ -55,9 +68,9 @@ test('descrição aceita quebra de linha', () => {
 });
 
 test('tipo errado e limites de tamanho', () => {
-  const errors = schemaErrors(sampleMod({ oculto: 'sim', descricao: 'x'.repeat(1001), versoesDoJogo: [], dependencias: Array.from({ length: 21 }, (_, i) => `Dep${i}`) }));
+  const errors = schemaErrors(sampleMod({ oculto: 'sim', descricao: 'x'.repeat(2001), versoesDoJogo: [], dependencias: Array.from({ length: 21 }, (_, i) => `Dep${i}`) }));
   assert.ok(errors.includes('/oculto: precisa ser do tipo boolean'));
-  assert.ok(errors.includes('/descricao: pode ter no máximo 1000 caracteres'));
+  assert.ok(errors.includes('/descricao: pode ter no máximo 2000 caracteres'));
   assert.ok(errors.includes('/versoesDoJogo: precisa ter ao menos 1 item(ns)'));
   assert.ok(errors.includes('/dependencias: pode ter no máximo 20 itens'));
 });

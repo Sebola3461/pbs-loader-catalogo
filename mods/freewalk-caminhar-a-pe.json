@@ -1,1 +1,25 @@
-{"id":"freewalk-caminhar-a-pe","nome":"FreeWalk (Caminhar a pé)","tipo":"plugin","autor":"KasaneTeto","dono":{"site":"01a193bf-3713-7623-b92a-4a4fec5f3c38"},"descricao":"Levante do banco do motorista, ande pelo ônibus, desça pela porta e ande pelo mapa em primeira pessoa.\n\n\n\nLevantar: com o ônibus parado, aperte G. Você vai para o ponto do salão mais perto do banco (os mesmos caminhos que os passageiros do jogo usam), olhando para a porta mais próxima. O jogo puxa o freio de mão.\n\nPortas: olhando para uma porta de perto, por dentro ou por fora, aparece sobre ela \"E Abrir porta frontal\" (ou do meio, traseira). E abre ou fecha aquela porta. Sem ar no reservatório, a porta não abre e aparece um aviso.\n\nDentro do ônibus: você anda pelo corredor e pelas escadas das portas, subindo e descendo os degraus. Com a porta aberta, é só andar por ela para descer, e para subir de volta. Com a porta fechada, ela barra a passagem.\n\nFora: W/A/S/D andam, Shift corre, Espaço pula, Ctrl agacha. O mouse olha em volta.\n\nDirigir de novo: entre no ônibus, vá até o posto do motorista e aperte G (aparece o aviso \"G: dirigir\"). Do lado de fora, G não faz nada.\n\nA pé, os controles de teclado do jogo ficam suspensos: W não acelera o ônibus e as letras não acionam comandos.","versoesDoJogo":["307"],"dependencias":[],"origem":"github","repo":"Sebola3461/FreeWalk","tag":"FreeWalk-v","arquivo":"FreeWalk.dll","pagina":null,"imagens":["https://raw.githubusercontent.com/Sebola3461/FreeWalk/main/prints/interacao-porta.webp","https://raw.githubusercontent.com/Sebola3461/FreeWalk/main/prints/onibus.webp","https://raw.githubusercontent.com/Sebola3461/FreeWalk/main/prints/porta-aberta.webp"]}
+{
+  "id": "freewalk-caminhar-a-pe",
+  "nome": "FreeWalk (Caminhar a pé)",
+  "tipo": "plugin",
+  "autor": "KasaneTeto",
+  "dono": {
+    "site": "01a193bf-3713-7623-b92a-4a4fec5f3c38"
+  },
+  "descricao": "Levante do banco do motorista, ande pelo ônibus, desça pela porta e ande pelo mapa em primeira pessoa.\n\n\n\nLevantar: com o ônibus parado, aperte G. Você vai para o ponto do salão mais perto do banco (os mesmos caminhos que os passageiros do jogo usam), olhando para a porta mais próxima. O jogo puxa o freio de mão.\n\nPortas: olhando para uma porta de perto, por dentro ou por fora, aparece sobre ela \"E Abrir porta frontal\" (ou do meio, traseira). E abre ou fecha aquela porta. Sem ar no reservatório, a porta não abre e aparece um aviso.\n\nDentro do ônibus: você anda pelo corredor e pelas escadas das portas, subindo e descendo os degraus. Com a porta aberta, é só andar por ela para descer, e para subir de volta. Com a porta fechada, ela barra a passagem.\n\nFora: W/A/S/D andam, Shift corre, Espaço pula, Ctrl agacha. O mouse olha em volta.\n\nDirigir de novo: entre no ônibus, vá até o posto do motorista e aperte G (aparece o aviso \"G: dirigir\"). Do lado de fora, G não faz nada.\n\nA pé, os controles de teclado do jogo ficam suspensos: W não acelera o ônibus e as letras não acionam comandos.",
+  "versoesDoJogo": [
+    "307"
+  ],
+  "origem": {
+    "github": {
+      "repo": "Sebola3461/FreeWalk",
+      "tag": "FreeWalk-v",
+      "arquivo": "FreeWalk.dll"
+    }
+  },
+  "imagens": [
+    "https://raw.githubusercontent.com/Sebola3461/FreeWalk/main/prints/interacao-porta.webp",
+    "https://raw.githubusercontent.com/Sebola3461/FreeWalk/main/prints/onibus.webp",
+    "https://raw.githubusercontent.com/Sebola3461/FreeWalk/main/prints/porta-aberta.webp"
+  ]
+}

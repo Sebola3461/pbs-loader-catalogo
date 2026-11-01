@@ -56,6 +56,8 @@ export function buildCatalog(entries, { trustedAuthors, generatedAt, warn = () =
         origem: github ? 'github' : 'externa',
         ...(github ? { repo: github.repo, tag: github.tag, arquivo: github.arquivo } : { url: mod.origem.externa.url }),
         pagina: mod.pagina ?? (github ? `https://github.com/${github.repo}` : null),
+        // Galeria do mod: URLs de imagens hospedadas no próprio repo (o site exibe na página do mod).
+        ...(mod.imagens?.length ? { imagens: mod.imagens } : {}),
         capa: hasCover ? `covers/${mod.id}.webp` : null,
         confiavel: trustedAuthors.has(ownerKey(mod.dono)),
         criadoEm: createdAt,
