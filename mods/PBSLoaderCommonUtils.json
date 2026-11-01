@@ -1,0 +1,11 @@
+{
+  "id": "PBSLoaderCommonUtils",
+  "nome": "PBSLoaderCommonUtils",
+  "tipo": "plugin",
+  "autor": "nzrn",
+  "dono": { "github": "Sebola3461" },
+  "descricao": "Base dos mods: atalhos sem conflito com o jogo, um dono só para o cursor, metadados do veículo e simulação de ar comprimido com freio a ar.",
+  "versoesDoJogo": ["307"],
+  "dependencias": [],
+  "origem": { "github": { "repo": "Sebola3461/pbsu-loader", "tag": "pbsloadercommonutils-v", "arquivo": "PBSLoaderCommonUtils.dll" } }
+}
