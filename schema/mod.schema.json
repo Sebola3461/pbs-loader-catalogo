@@ -38,6 +38,16 @@
       "items": { "type": "string", "pattern": "^[0-9]{1,6}$" }
     },
     "dependencias": { "type": "array", "maxItems": 20, "uniqueItems": true, "items": { "$ref": "#/$defs/id" } },
+    "imagens": {
+      "type": "array",
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "maxLength": 500,
+        "pattern": "^https://raw\\.githubusercontent\\.com/\\S*$"
+      }
+    },
     "origem": {
       "oneOf": [
         {

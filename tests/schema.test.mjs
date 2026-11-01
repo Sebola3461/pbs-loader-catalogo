@@ -35,6 +35,18 @@ test('recusa caracteres de controle, url sem https e versão que não é número
   assert.deepEqual(errors.sort(), ['/nome: formato inválido', '/pagina: formato inválido', '/versoesDoJogo/0: formato inválido']);
 });
 
+test('imagens da galeria: raw.githubusercontent e limite de 10', () => {
+  const ok = sampleMod({ imagens: ['https://raw.githubusercontent.com/fulano/meu-mod/main/prints/a.webp'] });
+  assert.deepEqual(schemaErrors(ok), []);
+  const many = sampleMod({ imagens: Array.from({ length: 11 }, (_, i) => `https://raw.githubusercontent.com/f/m/main/${i}.png`) });
+  assert.ok(schemaErrors(many).some((e) => e.startsWith('/imagens')));
+  assert.ok(
+    schemaErrors(sampleMod({ imagens: ['https://exemplo.com/a.png'] })).some((e) =>
+      e.startsWith('/imagens'),
+    ),
+  );
+});
+
 test('nome de campo inventado não injeta markdown no comentário', () => {
   const errors = schemaErrors({ ...sampleMod(), '![x](https://mal.com/a.png) @todos': 1, ['a'.repeat(60)]: 2 });
   assert.ok(errors.includes('(raiz): campo desconhecido "??x??https???mal?com?a?png???todos"'));

@@ -53,6 +53,7 @@ export function buildCatalog(entries, { trustedAuthors, generatedAt, warn = () =
         descricao: mod.descricao,
         versoesDoJogo: mod.versoesDoJogo,
         dependencias: mod.dependencias ?? [],
+        imagens: mod.imagens ?? [],
         origem: github ? 'github' : 'externa',
         ...(github ? { repo: github.repo, tag: github.tag, arquivo: github.arquivo } : { url: mod.origem.externa.url }),
         pagina: mod.pagina ?? (github ? `https://github.com/${github.repo}` : null),

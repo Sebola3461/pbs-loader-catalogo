@@ -18,6 +18,7 @@ test('achata a origem do GitHub nos campos que o instalador lê', () => {
     descricao: 'Faz alguma coisa útil.',
     versoesDoJogo: ['307'],
     dependencias: ['PBSLoaderCommonUtils'],
+    imagens: [],
     origem: 'github',
     repo: 'fulano/meu-mod',
     tag: 'MeuMod-v',
@@ -87,4 +88,16 @@ test('na publicação, sai o plugin que depende de mod da comunidade indisponív
 test('link externo sem página fica com página nula', () => {
   const c = buildCatalog([{ mod: sampleMod({ origem: { externa: { url: 'https://x.com/a' } } }), ...dates, hasCover: false }], { trustedAuthors: new Set(), generatedAt: 'agora' });
   assert.equal(c.mods[0].pagina, null);
+});
+
+test('imagens da galeria passam para o catálogo publicado', () => {
+  const imagens = [
+    'https://raw.githubusercontent.com/fulano/meu-mod/main/prints/salao.webp',
+    'https://raw.githubusercontent.com/fulano/meu-mod/main/prints/fora.webp',
+  ];
+  const c = buildCatalog([{ mod: sampleMod({ imagens }), ...dates, hasCover: false }], {
+    trustedAuthors: new Set(),
+    generatedAt: 'agora',
+  });
+  assert.deepEqual(c.mods[0].imagens, imagens);
 });
