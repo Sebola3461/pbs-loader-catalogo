@@ -1,0 +1,20 @@
+{
+  "id": "suspensao-ajustavel",
+  "nome": "Suspensão Ajustável",
+  "tipo": "plugin",
+  "autor": "KasaneTeto",
+  "dono": {
+    "site": "01a193bf-3713-7623-b92a-4a4fec5f3c38"
+  },
+  "descricao": "Suspensão ajustável a ar para os ônibus.\n\nAjoelhar: baixa o lado das portas para o embarque. Liga sozinho quando o ônibus está parado com a porta aberta, se a opção AutoAjoelhar estiver ativa.\nElevar: sobe o ônibus para passar em valetas e lombadas.\nAltura e rigidez por ônibus: salvas em UserData/SuspensaoAjustavel/<ônibus>.txt.\nReservatório de ar: é o mesmo do freio e das portas, simulado pela PBSLoaderCommonUtils. Sem a simulação de ar dela, a SuspensaoAjustavel usa um reservatório próprio, que também só enche com o motor ligado.\nSem ar: abaixo de 4,5 bar, as bolsas vão murchando devagar até o ônibus sentar no batente (AlturaSemAr, VelocidadeSemAr), e aparece o aviso \"Suspensão sem ar\". Quando o compressor passa de 5 bar, elas enchem de novo, gastando ar.\nTravas: o ônibus sai do ajoelhamento sozinho acima de 5 km/h e da elevação acima de 30 km/h.\nSom de ar: toca ao esvaziar e ao encher as bolsas.",
+  "versoesDoJogo": [
+    "307"
+  ],
+  "origem": {
+    "github": {
+      "repo": "Sebola3461/SuspensaoAjustavel",
+      "tag": "SuspensaoAjustavel-v",
+      "arquivo": "SuspensaoAjustavel.dll"
+    }
+  }
+}
