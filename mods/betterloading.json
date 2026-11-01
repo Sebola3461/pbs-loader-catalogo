@@ -1,0 +1,20 @@
+{
+  "id": "betterloading",
+  "nome": "BetterLoading",
+  "tipo": "plugin",
+  "autor": "KasaneTeto",
+  "dono": {
+    "site": "01a193bf-3713-7623-b92a-4a4fec5f3c38"
+  },
+  "descricao": "Melhora o carregamento dos mapas em até 650x, por exemplo, o mapa CCS que caiu de 4 minutos para 36 segundos de loading.",
+  "versoesDoJogo": [
+    "307"
+  ],
+  "origem": {
+    "github": {
+      "repo": "Sebola3461/BetterLoading",
+      "tag": "BetterLoading-v",
+      "arquivo": "BetterLoading.dll"
+    }
+  }
+}
