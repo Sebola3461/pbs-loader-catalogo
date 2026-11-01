@@ -2,7 +2,7 @@
   "id": "PBSLoaderCommonInterface",
   "nome": "PBSLoaderCommonInterface",
   "tipo": "plugin",
-  "autor": "nzrn",
+  "autor": "KasaneTeto",
   "dono": { "github": "Sebola3461" },
   "descricao": "Interface comum dos mods: menus e telas redesenhados, menu de mods com as opções e os atalhos de cada um, avisos do veículo e painel de condução na tela.",
   "versoesDoJogo": ["307"],
