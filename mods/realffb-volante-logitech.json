@@ -1,0 +1,20 @@
+{
+  "id": "realffb-volante-logitech",
+  "nome": "RealFFB (Volante Logitech)",
+  "tipo": "plugin",
+  "autor": "KasaneTeto",
+  "dono": {
+    "site": "01a193bf-3713-7623-b92a-4a4fec5f3c38"
+  },
+  "descricao": "Primeira versão pública. Force feedback novo para volantes Logitech, no lugar da mola única do jogo original.\n\nAutoalinhamento calculado pela força lateral dos pneus da frente, que fica leve quando eles chegam no limite.\nDireção hidráulica: com o motor ligado, a força nas mãos tem um teto. Com o motor desligado, o volante pesa de verdade.\nAtrito e amortecimento que seguram o volante. Ele não fica indo e voltando quando você solta.\nAntecipação: compensa o atraso da física do jogo, que fazia o volante entrar num vai-e-vem sem fim.\nIrregularidades, impactos, textura da pista e vibração do diesel, mais forte em marcha lenta e mais fraca acelerando.\nLEDs de rotação e ângulo de giro de 900°.\nVolta do Alt+Tab com todos os efeitos reaplicados.\nEscolha do controle: o mod acha o volante Logitech mesmo com outros controles ligados (Arduino, pedaleira). Dá para trocar no painel.\nPainel de ajustes no Ctrl+Alt+F10, com os presets Suave, Realista e Forte.\n\nExperimental: testado só num G25 com o Logitech Gaming Software 5.10. Em G27, G29, G920, G923 e com o G HUB deve funcionar pelo SDK da Logitech, mas ainda não foi testado. Ao reportar, mande o modelo do volante, o Latest.log e a telemetria (Ctrl+Alt+Shift+F10).\n\nRequer o PBSLoader (PBSLoaderCommonUtils e PBSLoaderCommonInterface).",
+  "versoesDoJogo": [
+    "307"
+  ],
+  "origem": {
+    "github": {
+      "repo": "Sebola3461/RealFFB",
+      "tag": "RealFFB-v",
+      "arquivo": "RealFFB.dll"
+    }
+  }
+}
