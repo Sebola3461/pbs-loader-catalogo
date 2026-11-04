@@ -1,14 +1,18 @@
 {
   "id": "bettergraphics-experimental",
-  "nome": "BetterGraphics (Experimental)",
+  "nome": "BetterGraphics",
   "tipo": "plugin",
   "autor": "KasaneTeto",
   "dono": {
     "site": "01a193bf-3713-7623-b92a-4a4fec5f3c38"
   },
-  "descricao": "Melhora os gráficos do jogo para deixar mais realista e suave.\n\nChuva, iluminação, reflexos, sombras e tudo mais!",
+  "descricao": "Iluminação, céu, reflexos e chuva realistas, calibrados com fotos reais de ruas de São Paulo e Uberlândia.\n\nCéu físico com nascer, pôr do sol e noite de cidade, névoa que acompanha o clima, postes LED à noite, verniz na pintura dos veículos, vidros que refletem de verdade, gotas no para-brisa com limpador e chuva que molha tudo que fica exposto.",
   "versoesDoJogo": [
     "307"
+  ],
+  "dependencias": [
+    "PBSLoaderCommonUtils",
+    "PBSLoaderCommonInterface"
   ],
   "origem": {
     "github": {
